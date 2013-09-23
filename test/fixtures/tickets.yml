@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  carrier: MyString
+  price: 1
+  departure: 2013-09-23 12:39:30
+  arrival: 2013-09-23 12:39:30
+
+two:
+  carrier: MyString
+  price: 1
+  departure: 2013-09-23 12:39:30
+  arrival: 2013-09-23 12:39:30

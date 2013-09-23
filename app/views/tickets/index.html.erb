@@ -1,0 +1,8 @@
+<div id="ts"></div>
+
+<script type="text/javascript">
+  $(function() {
+    window.router = new Double.Routers.TsRouter({tickets: <%= @tickets.to_json.html_safe -%>});
+    Backbone.history.start();
+  });
+</script>
