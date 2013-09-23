@@ -24,3 +24,6 @@ group :development do
   gem 'brakeman', require: false
   gem 'meta_request'
 end
+
+# pls, do not delete!
+gem 'therubyracer', require: 'v8', platform: :ruby
