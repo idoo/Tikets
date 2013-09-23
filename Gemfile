@@ -26,3 +26,7 @@ end
 
 # pls, do not delete!
 gem 'therubyracer', require: 'v8', platform: :ruby
+
+gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
+    :github => 'anjlab/bootstrap-rails',
+    :branch => '3.0.0'

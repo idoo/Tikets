@@ -6,6 +6,12 @@ class Double.Views.Tickets.IndexView extends Backbone.View
   initialize: () ->
     @options.tickets.bind('reset', @addAll)
 
+  filter: (e) ->
+    e.preventDefault()
+    e.stopPropagation()
+
+#    @f = $('#key').val
+
   addAll: () =>
     @options.tickets.each(@addOne)
 
