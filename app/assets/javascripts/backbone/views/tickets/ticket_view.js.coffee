@@ -1,7 +1,7 @@
-Double.Views.Ts ||= {}
+Double.Views.Tickets ||= {}
 
-class Double.Views.Ts.TView extends Backbone.View
-  template: JST["backbone/templates/ts/t"]
+class Double.Views.Tickets.TicketView extends Backbone.View
+  template: JST["backbone/templates/tickets/ticket"]
 
   events:
     "click .destroy" : "destroy"

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20130923083930) do
+ActiveRecord::Schema.define(version: 20130924063844) do
 
   create_table "tickets", force: true do |t|
     t.string   "carrier"
@@ -20,6 +20,9 @@ ActiveRecord::Schema.define(version: 20130923083930) do
     t.datetime "arrival"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "ticketable_id"
   end
+
+  add_index "tickets", ["ticketable_id"], name: "index_tickets_on_ticketable_id"
 
 end

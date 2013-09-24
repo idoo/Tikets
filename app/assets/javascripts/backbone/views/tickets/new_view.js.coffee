@@ -1,10 +1,10 @@
-Double.Views.Ts ||= {}
+Double.Views.Tickets ||= {}
 
-class Double.Views.Ts.NewView extends Backbone.View
-  template: JST["backbone/templates/ts/new"]
+class Double.Views.Tickets.NewView extends Backbone.View
+  template: JST["backbone/templates/tickets/new"]
 
   events:
-    "submit #new-t": "save"
+    "submit #new-ticket": "save"
 
   constructor: (options) ->
     super(options)
@@ -21,11 +21,11 @@ class Double.Views.Ts.NewView extends Backbone.View
     @model.unset("errors")
 
     @collection.create(@model.toJSON(),
-      success: (t) =>
-        @model = t
+      success: (ticket) =>
+        @model = ticket
         window.location.hash = "/#{@model.id}"
 
-      error: (t, jqXHR) =>
+      error: (ticket, jqXHR) =>
         @model.set({errors: $.parseJSON(jqXHR.responseText)})
     )
 

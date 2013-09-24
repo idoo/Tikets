@@ -1,18 +1,18 @@
-Double.Views.Ts ||= {}
+Double.Views.Tickets ||= {}
 
-class Double.Views.Ts.EditView extends Backbone.View
-  template: JST["backbone/templates/ts/edit"]
+class Double.Views.Tickets.EditView extends Backbone.View
+  template: JST["backbone/templates/tickets/edit"]
 
   events:
-    "submit #edit-t": "update"
+    "submit #edit-ticket": "update"
 
   update: (e) ->
     e.preventDefault()
     e.stopPropagation()
 
     @model.save(null,
-      success: (t) =>
-        @model = t
+      success: (ticket) =>
+        @model = ticket
         window.location.hash = "/#{@model.id}"
     )
 
