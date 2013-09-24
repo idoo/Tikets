@@ -23,6 +23,7 @@ group :development do
   gem "faker", "~> 1.2.0"
   gem 'brakeman', require: false
   gem 'meta_request'
+  gem 'binding_of_caller'
 end
 
 # pls, do not delete!
