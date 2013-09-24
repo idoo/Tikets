@@ -1,40 +1,63 @@
 module TicketsHelper
-  def build_hash_tree(collection, options={}, result={})
+  def get_tree_children tree, opts={}
+    node  = opts[:node]
+    boost = opts[:boost]
+    children = boost[node.id]
+  end
+
+  def build_hash_tree(tree, options={}, result=[])
     result = Array.wrap result
-    collection = Array.wrap collection
+    tree   = Array.wrap tree
 
     opts = {
-        node:     nil, # node
-        parent:   :parent_id, # parent id
-        boost:    [] # BOOST! array
-
+      node:      nil, # node
+      parent_id: :parent_id, # parent id
+      boost:     [] # BOOST! array
     }.merge!(options)
 
     node = opts[:node]
 
     if opts[:boost].empty?
-      collection.each do |i|
+      tree.each do |i|
         num = i.ticketable_id || 0
         opts[:boost][num] = [] unless opts[:boost][num]
         opts[:boost][num].push i
       end
     end
 
-    if node
-      children_res = ''
+    if !node
+      roots = opts[:boost][0]
+
+      # define roots, if it's need
+      if roots.nil? && !tree.empty?
+        min_parent_id = tree.map(opts[:parent].to_sym).compact.min
+        roots = tree.select{ |elem| elem[opts[:parent_id]] == min_parent_id }
+      end
+
+      # children rendering
+      if roots
+        roots.each do |root|
+          _opts = opts.merge({ node: root, boost: opts[:boost] })
+          result.push build_hash_tree(tree, _opts)
+        end
+      end
+    else
+      # children rendering
+      children_res = []
       children = opts[:boost][node.id]
-      opts.merge!({has_children: children.blank?})
 
       unless children.nil?
         children.each do |elem|
-          _opts = opts.merge({node: elem, boost: opts[:boost]})
-          children_res << build_hash_tree(collection, _opts)
+          # _opts = opts.merge({node: elem, boost: opts[:boost]})
+          children_res.push children #get_tree_children(children)
         end
       end
 
-      _opts = opts.merge({nodes: node, :children => children_res})
-      result << build_hash_tree(self, _opts, result)
+      result.push children_res
+      # _opts = opts.merge({nodes: node, :children => children_res})
+      # result.push build_hash_tree(self, _opts, result)
     end
+
     result
   end
 end

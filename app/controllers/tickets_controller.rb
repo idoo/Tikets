@@ -1,10 +1,14 @@
 class TicketsController < ApplicationController
+  include TicketsHelper
+
   before_action :set_ticket, only: [:show, :edit, :update, :destroy]
 
   # GET /tickets
   # GET /tickets.json
   def index
-    @tickets = Ticket.all
+    return render text: '<pre>' + build_hash_tree(Ticket.all, parent_id: :ticketable_id).to_yaml
+
+    # @tickets = Ticket.all
   end
 
   # GET /tickets/1
