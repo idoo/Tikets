@@ -16,3 +16,13 @@ require 'faker'
       arrival: Time.now + 2.week
   )
 end
+
+1000.times do |i|
+  Ticket.create(
+      carrier: Faker::Company.name,
+      price: Time.now.to_i + Random.rand(100),
+      departure: Time.now,
+      arrival: Time.now + 2.week,
+      ticketable_id: Random.rand(100)
+  )
+end
