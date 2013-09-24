@@ -4,7 +4,7 @@ class TicketsController < ApplicationController
   # GET /tickets
   # GET /tickets.json
   def index
-    @tickets = Ticket.where(ticketable_id: nil)
+    @tickets = Ticket.all
   end
 
   # GET /tickets/1
