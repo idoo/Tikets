@@ -7,7 +7,8 @@ class Double.Views.Tickets.IndexView extends Backbone.View
     @options.tickets.bind('reset', @addAll)
 
   events:
-    "submit #filter" : "filter"
+    "submit #filter" : "filter",
+#    'transition:complete': 'renderFirst'
 
   filter: (e) ->
     e.preventDefault()
@@ -16,7 +17,7 @@ class Double.Views.Tickets.IndexView extends Backbone.View
     @param = $('#key').val()
     @list = @options.tickets.byCarrier(@param)
 
-    if @fil is "" then @render() else @renderFilter()
+    if @param is "" then @render() else @renderFilter()
     return
 
   addAll: () =>
@@ -25,6 +26,12 @@ class Double.Views.Tickets.IndexView extends Backbone.View
   addOne: (ticket) =>
     view = new Double.Views.Tickets.TicketView({model : ticket})
     @$("tbody").append(view.render().el)
+
+  renderFirst: ->
+    @list = @options.tickets.onlyFirstLevel()
+    $(@el).html(@template(tickets: @options.tickets.toJSON() ))
+    @addOne model for model in @list
+    @
 
   renderFilter: ->
     $(@el).html(@template(tickets: @options.tickets.toJSON() ))

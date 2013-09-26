@@ -10,6 +10,7 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 //
+
 //= require jquery
 //= require jquery_ujs
 
@@ -18,6 +19,9 @@
 //= require backbone_rails_sync
 //= require backbone_datalink
 //= require backbone/double
-//= require twitter/bootstrap
+
+//= require sugar
+//= require_tree .
+
 
 

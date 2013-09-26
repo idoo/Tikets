@@ -6,9 +6,9 @@ class TicketsController < ApplicationController
   # GET /tickets
   # GET /tickets.json
   def index
-    return render text: '<pre>' + build_hash_tree(Ticket.all, parent_id: :ticketable_id).to_yaml
-
-    # @tickets = Ticket.all
+    #return render text: '<pre>' + build_hash_tree(Ticket.all, parent_id: :ticketable_id).to_yaml
+    #@tickets = build_hash_tree(Ticket.all, parent_id: :ticketable_id)
+    @tickets = Ticket.all
   end
 
   # GET /tickets/1

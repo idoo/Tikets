@@ -8,27 +8,43 @@ require 'faker'
 #
 #   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
 #   Mayor.create(name: 'Emanuel', city: cities.first)
+p
 p "first level"
 
-100.times do |i|
+20.times do |i|
   Ticket.create(
       carrier: Faker::Company.name,
-      price: Time.now.to_i + Random.rand(100),
+      price: Time.now.to_i / 100000 + Random.rand(100),
       departure: Time.now,
       arrival: Time.now + 2.week
   )
   print '.'
 end
 
+p
 p "Second level"
 
 100.times do |i|
   Ticket.create(
       carrier: Faker::Company.name,
-      price: Time.now.to_i + Random.rand(100),
+      price: Time.now.to_i / 100000 + Random.rand(100),
       departure: Time.now,
       arrival: Time.now + 2.week,
-      ticketable_id: Random.rand(100)
+      ticketable_id: Random.rand(20)
+  )
+  print '.'
+end
+
+p
+p "Third level"
+
+500.times do |i|
+  Ticket.create(
+      carrier: Faker::Company.name,
+      price: Time.now.to_i / 100000 + Random.rand(100),
+      departure: Time.now,
+      arrival: Time.now + 2.week,
+      ticketable_id: Random.rand(20..120)
   )
   print '.'
 end

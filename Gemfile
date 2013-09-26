@@ -11,6 +11,12 @@ gem 'jquery-rails'
 
 gem 'jbuilder', '~> 1.2'
 
+gem "sugar-rails"
+
+group :assets do
+  gem 'haml_coffee_assets'
+  gem 'execjs'
+end
 
 # gem 'turbolinks'
 # Backbone
@@ -30,5 +36,4 @@ end
 gem 'therubyracer', require: 'v8', platform: :ruby
 
 gem 'anjlab-bootstrap-rails', :require => 'bootstrap-rails',
-    :github => 'anjlab/bootstrap-rails',
-    :branch => '3.0.0'
+    :github => 'anjlab/bootstrap-rails'

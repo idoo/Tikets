@@ -15,3 +15,10 @@ class Double.Collections.TicketsCollection extends Backbone.Collection
 
   byCarrier: (param) ->
     @.where(carrier: param)
+
+  onlyFirstLevel: ->
+    @.where(ticketable_id: null)
+
+  findByParent: (id) ->
+    @.where(ticketable_id: id)
+
