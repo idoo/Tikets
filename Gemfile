@@ -21,7 +21,6 @@ end
 # gem 'turbolinks'
 # Backbone
 gem "rails-backbone", "~> 0.9.10"
-gem 'joosy', github: 'joosy/joosy', branch: "1.2.0-beta.2"
 
 group :development do
   gem 'quiet_assets', '>= 1.0.1'
